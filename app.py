@@ -58,6 +58,113 @@ st.markdown(f"""
         display: inline-block;
         line-height: 1.2;
     }}
+
+    /* Overlay for better content visibility */
+    .stApp:before {{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(32, 0, 82, 0.75);
+        backdrop-filter: blur(5px);
+        z-index: 0;
+    }}
+
+    /* Ensure content stays above the overlay */
+    .stApp > header {{
+        z-index: 1;
+        position: relative;
+    }}
+
+    .main {{
+        z-index: 1;
+        position: relative;
+    }}
+
+    /* Button styling */
+    .stButton > button {{
+        width: 100%;
+        border-radius: 12px;
+        border: 2px solid #836EF9;
+        padding: 15px 32px;
+        background: linear-gradient(45deg, #836EF9, #9B8AFB);
+        color: #FBFAF9;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.01em;
+        transition: all 0.3s ease;
+    }}
+
+    .stButton > button:hover {{
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(131, 110, 249, 0.3);
+        background: linear-gradient(45deg, #9B8AFB, #836EF9);
+    }}
+
+    /* Card-like container */
+    .content-container {{
+        background: rgba(32, 0, 82, 0.6);
+        border-radius: 15px;
+        padding: 25px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(131, 110, 249, 0.2);
+        margin: 10px 0;
+        box-shadow: 0 8px 32px 0 rgba(131, 110, 249, 0.2);
+    }}
+
+    /* Subtitle and heading styles */
+    h2, h3, h4, h5, h6 {{
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: #FBFAF9;
+        margin-bottom: 1rem;
+    }}
+
+    /* Paragraph text */
+    p, div {{
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        letter-spacing: -0.005em;
+        color: #FBFAF9;
+    }}
+
+    /* Input field styling */
+    .stTextInput > div > div > input {{
+        font-family: 'Inter', sans-serif;
+        border-radius: 10px;
+        border: 1px solid #836EF9;
+        background: rgba(32, 0, 82, 0.7);
+        color: #FBFAF9;
+        font-size: 1rem;
+        letter-spacing: -0.005em;
+    }}
+
+    /* Metric styling */
+    .css-1xarl3l {{
+        background: rgba(32, 0, 82, 0.6);
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid rgba(131, 110, 249, 0.2);
+        font-family: 'Inter', sans-serif;
+        color: #FBFAF9;
+    }}
+
+    /* Label text */
+    .stTextInput > label {{
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        letter-spacing: -0.005em;
+        color: #FBFAF9;
+    }}
+
+    /* Table text color */
+    .stDataFrame {{
+        color: #FBFAF9;
+    }}
 </style>
 
 <div class="header-container">
@@ -122,7 +229,7 @@ def main():
     # Create a card-like container with custom styling
     st.markdown('<div class="content-container">', unsafe_allow_html=True)
 
-    # Input fields
+    # Input fields with placeholders instead of default values
     contract_address = st.text_input(
         "🔑 Contract Address",
         placeholder="0x...",
